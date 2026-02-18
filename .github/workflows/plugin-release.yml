@@ -1,0 +1,62 @@
+name: Build Plugin Assets & Release Zip
+
+on:
+  release:
+    types: [published]
+
+permissions:
+  contents: write
+
+jobs:
+  build-assets-and-package-release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout tag
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Use Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install deps
+        run: npm ci
+
+      - name: Build assets
+        run: npm run build
+
+      - name: Cleanup
+        run: |
+          rm -rf .*
+          rm -rf dist
+          rm -rf node_modules
+          rm -rf composer.*
+          rm -rf composer-*
+          rm -rf package.*
+          rm -rf package-*
+          rm -rf webpack.*
+          rm -rf *.ps1
+          rm -rf *.xml
+
+      - name: Create plugin zip
+        id: create_zip
+        run: |
+          PLUGIN_SLUG="eu-ai-act-ready"
+          GITHUB_REF_NAME="${{ github.ref_name }}"
+          VERSION="${GITHUB_REF_NAME#v}"
+          ZIP_NAME="${PLUGIN_SLUG}-${VERSION}.zip"
+          OUT="${RUNNER_TEMP}/${ZIP_NAME}"
+
+          zip -r "${OUT}" . \
+            -x ".github/*"
+
+          echo "zip_path=${OUT}" >> $GITHUB_OUTPUT
+
+      - name: Upload zip to release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: ${{ steps.create_zip.outputs.zip_path }}

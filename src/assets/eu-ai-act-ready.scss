@@ -1,0 +1,21 @@
+/**
+ * EU AI Act Ready - Combined Frontend Styles
+ *
+ * This file imports all frontend styles and combines them into one
+ * production build file.
+ *
+ * Uses SCSS features:
+ * - Variables for consistent design tokens
+ * - Mixins for reusable patterns
+ * - Nesting for better organization
+ * - Proper modular structure
+ */
+
+// Import variables first (no output)
+@use '../variables';
+@use '../mixins';
+
+// Import component styles (with output)
+@use 'disclosure';
+@use 'chatbot';
+@use 'media';

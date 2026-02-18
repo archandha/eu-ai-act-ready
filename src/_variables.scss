@@ -1,0 +1,246 @@
+/**
+ * EU AI Act Ready - SCSS Variables
+ *
+ * Centralized design tokens for consistent styling across the plugin
+ */
+
+// ========================================
+// COLOR PALETTE
+// ========================================
+
+// Brand Colors
+$color-primary: #667eea;
+$color-primary-dark: #764ba2;
+$color-primary-light: #f0f7ff;
+
+// WordPress Admin Colors
+$color-wp-blue: #2271b1;
+$color-wp-blue-dark: #135e96;
+$color-wp-gray: #646970;
+$color-wp-gray-light: #8c8f94;
+$color-wp-gray-dark: #1d2327;
+$color-wp-border: #e1e1e1;
+$color-wp-bg: #f0f0f1;
+
+// State Colors
+$color-success: #4caf50;
+$color-success-dark: #388e3c;
+$color-error: #d32f2f;
+$color-info: #2196f3;
+$color-info-dark: #1976d2;
+$color-warning: #ff9800;
+
+// Neutral Colors
+$color-white: #fff;
+$color-black: #000;
+$color-text: #333;
+$color-text-light: #555;
+$color-text-lighter: #666;
+$color-bg-light: #f8f9fa;
+$color-bg-gray: #f5f5f5;
+$color-border: #ddd;
+$color-border-light: #e0e0e0;
+
+// Overlay & Shadows
+$color-overlay: rgba(0, 0, 0, 0.5);
+$color-overlay-dark: rgba(0, 0, 0, 0.4);
+
+// ========================================
+// GRADIENTS
+// ========================================
+
+$gradient-primary: linear-gradient(135deg, $color-primary 0%, $color-primary-dark 100%);
+$gradient-admin: linear-gradient(135deg, $color-wp-blue 0%, $color-wp-blue-dark 100%);
+
+// ========================================
+// SPACING
+// ========================================
+
+$spacing-xs: 4px;
+$spacing-sm: 8px;
+$spacing-md: 12px;
+$spacing-lg: 15px;
+$spacing-xl: 20px;
+$spacing-2xl: 24px;
+$spacing-3xl: 30px;
+
+// ========================================
+// TYPOGRAPHY
+// ========================================
+
+// Font Families
+$font-family-base: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+$font-family-mono: 'Courier New', Courier, monospace;
+
+// Font Sizes
+$font-size-xs: 9px;
+$font-size-sm: 10px;
+$font-size-base: 11px;
+$font-size-md: 12px;
+$font-size-lg: 13px;
+$font-size-xl: 14px;
+$font-size-2xl: 16px;
+$font-size-3xl: 18px;
+$font-size-4xl: 20px;
+$font-size-5xl: 23px;
+$font-size-6xl: 32px;
+$font-size-icon: 14px;
+$font-size-icon-lg: 16px;
+$font-size-icon-xl: 18px;
+$font-size-icon-2xl: 24px;
+$font-size-icon-3xl: 28px;
+$font-size-icon-4xl: 48px;
+
+// Font Weights
+$font-weight-normal: 400;
+$font-weight-medium: 500;
+$font-weight-semibold: 600;
+$font-weight-bold: bold;
+
+// Line Heights
+$line-height-tight: 1.2;
+$line-height-base: 1.4;
+$line-height-normal: 1.5;
+$line-height-relaxed: 1.6;
+$line-height-loose: 1.8;
+$line-height-single: 1;
+
+// ========================================
+// BORDER RADIUS
+// ========================================
+
+$radius-sm: 2px;
+$radius-base: 4px;
+$radius-md: 5px;
+$radius-lg: 6px;
+$radius-xl: 8px;
+$radius-2xl: 12px;
+$radius-full: 20px;
+$radius-circle: 50%;
+
+// ========================================
+// SHADOWS
+// ========================================
+
+$shadow-xs: 0 1px 1px rgba(0, 0, 0, 0.04);
+$shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.06);
+$shadow-base: 0 1px 3px rgba(0, 0, 0, 0.1);
+$shadow-md: 0 2px 4px rgba(0, 0, 0, 0.1);
+$shadow-lg: 0 2px 8px rgba(0, 0, 0, 0.15);
+$shadow-xl: 0 4px 12px rgba(0, 0, 0, 0.15);
+$shadow-2xl: 0 4px 12px rgba(0, 0, 0, 0.2);
+$shadow-3xl: 0 10px 40px rgba(0, 0, 0, 0.2);
+$shadow-admin: 0 2px 8px rgba(34, 113, 177, 0.25);
+$shadow-admin-hover: 0 3px 8px rgba(34, 113, 177, 0.25);
+$shadow-cta: 0 2px 8px rgba(34, 113, 177, 0.25);
+
+// ========================================
+// ADMIN SPECIFIC COLORS
+// ========================================
+
+// ACF-style colors
+$admin-table-header: #f9f9f9;
+$admin-table-row: #f6f7f7;
+$admin-table-row-hover: #F7FBFD;
+$admin-table-row-selected: #f0f6fc;
+$admin-table-row-selected-hover: #e8f0f8;
+
+// Detection badges
+$detection-high: #10a37f;
+$detection-medium: #d97706;
+$detection-low: #6b7280;
+
+// Status colors
+$status-confirmed: $detection-high;
+$status-detected: $detection-medium;
+$status-low: #999;
+
+// ========================================
+// ADMIN SPECIFIC SIZES
+// ========================================
+
+// Table dimensions
+$table-padding: 12px 14px;
+$table-thumbnail-size: 40px;
+$table-checkbox-width: 35px;
+
+// Stat card dimensions
+$stat-icon-size: 48px;
+$stat-card-min-width: 250px;
+
+// CTA dimensions
+$cta-icon-size: 56px;
+
+// ========================================
+// Z-INDEX LAYERS
+// ========================================
+
+$z-base: 1;
+$z-dropdown: 10;
+$z-sticky: 100;
+$z-fixed: 1000;
+$z-modal-backdrop: 999998;
+$z-modal: 999999;
+
+// ========================================
+// TRANSITIONS
+// ========================================
+
+$transition-fast: 0.2s;
+$transition-base: 0.3s;
+$transition-slow: 0.4s;
+$transition-ease: ease;
+$transition-ease-in: ease-in;
+$transition-ease-out: ease-out;
+$transition-ease-in-out: ease-in-out;
+
+// Common transitions
+$transition-all: all $transition-fast $transition-ease;
+$transition-transform: transform $transition-fast $transition-ease;
+$transition-opacity: opacity $transition-fast $transition-ease;
+$transition-background: background $transition-fast $transition-ease;
+$transition-box-shadow: box-shadow $transition-fast $transition-ease;
+
+// ========================================
+// BREAKPOINTS
+// ========================================
+
+$breakpoint-sm: 480px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 1024px;
+$breakpoint-xl: 1280px;
+
+// ========================================
+// SIZES
+// ========================================
+
+// Button sizes
+$button-padding-sm: 4px 8px;
+$button-padding-base: 6px 10px;
+$button-padding-md: 8px 12px;
+$button-padding-lg: 10px 20px;
+$button-padding-xl: 12px 36px;
+
+// Badge sizes
+$badge-padding-sm: 3px 6px;
+$badge-padding-base: 4px 8px;
+$badge-padding-md: 6px 10px;
+$badge-padding-lg: 8px 14px;
+$badge-padding-xl: 12px 18px;
+
+// Container widths
+$container-sm: 320px;
+$container-md: 350px;
+$container-lg: 500px;
+
+// ========================================
+// GAPS
+// ========================================
+
+$gap-xs: 4px;
+$gap-sm: 6px;
+$gap-md: 8px;
+$gap-lg: 10px;
+$gap-xl: 15px;
+$gap-2xl: 20px;
+$gap-3xl: 24px;

@@ -1,0 +1,318 @@
+/**
+ * EU AI Act Ready - Media Transparency Styles
+ *
+ * Organization:
+ * 1. Media Container Base
+ * 2. Caption Style (Default)
+ * 3. Badge Style
+ * 4. Overlay Style
+ * 5. Border Style
+ * 6. WordPress Integration
+ * 7. Gallery Support
+ * 8. Animations
+ * 9. Responsive Design
+ * 10. Accessibility & Print
+ */
+
+@use '../variables' as *;
+@use '../mixins' as *;
+
+/* ========================================
+   1. MEDIA CONTAINER BASE
+   ======================================== */
+
+.ai-media-container {
+    position: relative;
+    display: inline-block;
+
+    img {
+        display: block;
+        max-width: 100% !important;
+        height: auto !important;
+    }
+
+    // Clear floats
+    &::after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+}
+
+/* ========================================
+   2. CAPTION STYLE (DEFAULT)
+   ======================================== */
+
+.ai-media-caption {
+    @include flex-align(center);
+    gap: $gap-sm;
+    padding: $spacing-sm $spacing-md;
+    background: $color-primary-light;
+    @include border-left-accent($color-primary, 3px);
+    margin-top: $spacing-sm;
+    font-size: $font-size-lg;
+    color: $color-text-light;
+    border-radius: 0 $radius-base $radius-base 0;
+
+    .ai-icon {
+        font-size: $font-size-md;
+    }
+
+    .ai-text {
+        font-weight: $font-weight-medium;
+    }
+}
+
+/* ========================================
+   3. BADGE STYLE
+   ======================================== */
+
+.ai-media-badge {
+    position: absolute;
+    top: $spacing-lg;
+    right: $spacing-lg;
+    @include badge-pill(rgba($color-primary, 0.95));
+    padding: $badge-padding-base;
+    gap: $gap-xs;
+    box-shadow: $shadow-lg;
+    z-index: $z-dropdown;
+    cursor: help;
+    transition: $transition-transform, $transition-box-shadow;
+    font-size: $font-size-md;
+
+    &:hover {
+        transform: scale(1.05);
+        box-shadow: $shadow-2xl;
+    }
+
+    .ai-icon {
+        font-size: $font-size-md;
+    }
+
+    .ai-text {
+        @include text-uppercase-spaced;
+        font-size: $font-size-sm;
+    }
+}
+
+/* ========================================
+   4. OVERLAY STYLE
+   ======================================== */
+
+.ai-media-overlay {
+    @include absolute-cover;
+    background: linear-gradient(
+        to bottom,
+        $color-overlay-dark 0%,
+        rgba($color-black, 0) 30%,
+        rgba($color-black, 0) 70%,
+        $color-overlay-dark 100%
+    );
+    pointer-events: none;
+    border-radius: inherit;
+}
+
+.ai-overlay-badge {
+    position: absolute;
+    top: $spacing-lg;
+    left: $spacing-lg;
+    @include badge-pill(rgba($color-white, 0.95), $color-primary);
+    padding: $spacing-sm $spacing-md;
+    gap: $gap-sm;
+    box-shadow: $shadow-lg;
+    border-radius: $radius-lg;
+    font-size: $font-size-md;
+
+    .ai-icon {
+        font-size: $font-size-md;
+    }
+}
+
+/* ========================================
+   5. BORDER STYLE
+   ======================================== */
+
+.ai-media-container:has(.ai-media-border-label) {
+    @include gradient-border($gradient-primary, 3px);
+
+    img {
+        border-radius: $radius-sm;
+    }
+}
+
+.ai-media-border-label {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: $gradient-primary;
+    color: $color-white;
+    padding: $spacing-xs $spacing-md;
+    border-radius: $radius-2xl;
+    font-size: $font-size-base;
+    font-weight: $font-weight-semibold;
+    white-space: nowrap;
+    box-shadow: $shadow-lg;
+}
+
+/* ========================================
+   6. WORDPRESS INTEGRATION
+   ======================================== */
+
+/* Gutenberg Editor Compatibility */
+.block-editor {
+    .ai-media-container {
+        margin: $spacing-lg 0;
+    }
+
+    .ai-media-badge,
+    .ai-overlay-badge {
+        pointer-events: auto;
+    }
+}
+
+/* WordPress Alignment Classes */
+.alignleft,
+.alignright,
+.aligncenter {
+    .ai-media-container {
+        max-width: 100%;
+    }
+}
+
+.alignleft .ai-media-container {
+    float: left;
+    margin: 5px $spacing-xl $spacing-xl 0;
+}
+
+.alignright .ai-media-container {
+    float: right;
+    margin: 5px 0 $spacing-xl $spacing-xl;
+}
+
+.aligncenter .ai-media-container {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* ========================================
+   7. GALLERY SUPPORT
+   ======================================== */
+
+.gallery {
+    .ai-media-container {
+        display: inline-block;
+        margin: 5px;
+    }
+}
+
+.gallery-item {
+    .ai-media-badge {
+        top: 5px;
+        right: 5px;
+        padding: $badge-padding-sm;
+        font-size: $font-size-xs;
+    }
+}
+
+/* ========================================
+   8. ANIMATIONS
+   ======================================== */
+
+@keyframes fadeInLabel {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.ai-media-caption,
+.ai-media-badge,
+.ai-overlay-badge {
+    animation: fadeInLabel $transition-base $transition-ease-out;
+}
+
+/* ========================================
+   9. RESPONSIVE DESIGN
+   ======================================== */
+
+@include mobile {
+    .ai-media-badge {
+        top: 5px;
+        right: 5px;
+        padding: $button-padding-sm;
+        font-size: $font-size-sm;
+    }
+
+    .ai-media-caption {
+        font-size: $font-size-md;
+        padding: $spacing-sm $spacing-lg;
+    }
+
+    .ai-overlay-badge {
+        padding: $button-padding-sm;
+        font-size: $font-size-base;
+    }
+}
+
+/* ========================================
+   10. ACCESSIBILITY & PRINT
+   ======================================== */
+
+/* Accessibility - Focus States */
+.ai-media-badge,
+.ai-overlay-badge,
+.ai-media-caption {
+    @include focus-outline($color-primary);
+}
+
+/* Screen Reader Text */
+.ai-media-sr-only {
+    @include screen-reader-only;
+}
+
+/* High Contrast Mode */
+@include high-contrast {
+    .ai-media-badge {
+        border: 2px solid $color-white;
+    }
+
+    .ai-media-caption {
+        border-width: 3px;
+        font-weight: $font-weight-bold;
+    }
+}
+
+/* Reduced Motion */
+@include reduced-motion {
+    .ai-media-badge,
+    .ai-media-caption,
+    .ai-overlay-badge {
+        animation: none;
+        transition: none;
+    }
+}
+
+/* Print Styles */
+@include print {
+    .ai-media-badge,
+    .ai-media-overlay {
+        display: none !important;
+    }
+
+    .ai-media-caption {
+        background: $color-white;
+        border: 1px solid $color-black;
+        color: $color-black;
+
+        &::before {
+            content: "AI-Generated Image: ";
+            font-weight: $font-weight-bold;
+        }
+    }
+}

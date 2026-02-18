@@ -1,0 +1,381 @@
+/**
+ * EU AI Act Ready - Chatbot Transparency Styles
+ *
+ * Organization:
+ * 1. Base Styles
+ * 2. Banner Style
+ * 3. Badge Style
+ * 4. Inline Style
+ * 5. Modal Style
+ * 6. Tooltip Style
+ * 7. Animations
+ * 8. Responsive Design
+ * 9. Accessibility
+ * 10. Print & High Contrast
+ */
+
+@use 'sass:color';
+@use '../variables' as *;
+@use '../mixins' as *;
+
+/* ========================================
+   1. BASE STYLES
+   ======================================== */
+
+.ai-chatbot-notice {
+    font-family: $font-family-base;
+    font-size: $font-size-xl;
+    line-height: $line-height-normal;
+    color: $color-text;
+    box-sizing: border-box;
+
+    * {
+        box-sizing: border-box;
+    }
+}
+
+.ai-chatbot-icon {
+    font-size: $font-size-icon-xl;
+    vertical-align: middle;
+}
+
+/* ========================================
+   2. BANNER STYLE
+   ======================================== */
+
+.ai-chatbot-banner {
+    @include fixed-position($bottom: 80px, $right: 20px);
+    max-width: $container-md;
+    background: $gradient-primary;
+    color: $color-white;
+    padding: $spacing-md $spacing-2xl;
+    border-radius: $radius-xl;
+    box-shadow: $shadow-xl;
+    z-index: $z-modal-backdrop;
+    @include slide-in-right($transition-slow);
+
+    .ai-chatbot-notice-content {
+        @include flex-align(center);
+        gap: $gap-md;
+    }
+
+    .ai-chatbot-message {
+        flex: 1;
+        font-size: $font-size-lg;
+        line-height: $line-height-base;
+    }
+
+    .ai-chatbot-notice-close {
+        @include close-button($spacing-2xl);
+        background: rgba($color-white, 0.2);
+        color: $color-white;
+        font-size: $font-size-icon-lg;
+        border-radius: $radius-circle;
+        padding: 0;
+        line-height: $line-height-single;
+        flex-shrink: 0;
+
+        &:hover {
+            background: rgba($color-white, 0.3);
+        }
+    }
+}
+
+/* ========================================
+   3. BADGE STYLE
+   ======================================== */
+
+.ai-chatbot-badge {
+    @include fixed-position($bottom: 80px, $right: 20px);
+    @include badge-pill($color-primary);
+    padding: $spacing-sm $spacing-md;
+    box-shadow: $shadow-lg;
+    z-index: $z-modal-backdrop;
+    font-size: $font-size-md;
+    cursor: default;
+    gap: $gap-xs;
+    @include fade-in($transition-base);
+    @include hover-lift();
+
+    &:hover {
+        box-shadow: $shadow-2xl;
+    }
+
+    .ai-chatbot-icon {
+        font-size: $font-size-icon;
+        margin: 0;
+    }
+
+    .ai-chatbot-text {
+        @include text-uppercase-spaced;
+        font-size: $font-size-base;
+    }
+}
+
+/* ========================================
+   4. INLINE STYLE
+   ======================================== */
+
+.ai-chatbot-inline {
+    @include fixed-position($bottom: 80px, $right: 20px);
+    max-width: $container-sm;
+    background: $color-bg-light;
+    @include border-left-accent($color-primary);
+    padding: $spacing-lg $spacing-xl;
+    border-radius: $radius-base;
+    box-shadow: $shadow-md;
+    z-index: $z-modal-backdrop;
+    @include slide-in-right($transition-base);
+
+    .ai-chatbot-message {
+        font-size: $font-size-md;
+        color: $color-text-light;
+        margin: 0;
+        display: contents;
+    }
+}
+
+/* ========================================
+   5. MODAL STYLE
+   ======================================== */
+
+/* Modal Trigger */
+.ai-chatbot-modal-trigger {
+    @include fixed-position($bottom: 80px, $right: 20px);
+    z-index: $z-modal-backdrop;
+}
+
+.ai-chatbot-disclosure-btn {
+    @include button-primary($color-primary);
+    padding: $spacing-sm $spacing-xl;
+    border-radius: $radius-full;
+    font-size: $font-size-md;
+    box-shadow: $shadow-lg;
+    gap: $gap-sm;
+
+    &:hover,
+    &:focus {
+        background: $color-primary;
+    }
+}
+
+/* Modal Overlay */
+.ai-chatbot-modal {
+    @include modal-overlay;
+}
+
+/* Modal Content */
+.ai-chatbot-modal-content {
+    @include modal-content($container-lg);
+    padding: $spacing-3xl;
+
+    h3 {
+        margin: 0 0 $spacing-lg 0;
+        color: $color-text;
+        font-size: $font-size-4xl;
+    }
+
+    p {
+        color: $color-text-light;
+        line-height: $line-height-relaxed;
+        margin-bottom: $spacing-lg;
+    }
+
+    ul {
+        padding-left: $spacing-xl;
+        margin-bottom: $spacing-lg;
+    }
+
+    li {
+        color: $color-text-light;
+        margin-bottom: $spacing-sm;
+    }
+
+    a {
+        color: $color-primary;
+        text-decoration: none;
+        font-weight: $font-weight-semibold;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}
+
+/* Modal Close Button */
+.ai-chatbot-modal-close {
+    @include close-button(32px);
+    position: absolute;
+    top: $spacing-lg;
+    right: $spacing-lg;
+    font-size: $font-size-icon-2xl;
+    line-height: $line-height-single;
+    color: $color-text-lighter;
+    padding-left: 2px;;
+    padding-top: 0px;
+
+    &:hover {
+        background: color.scale($color-bg-light, $lightness: -10%);
+    }
+}
+
+/* ========================================
+   6. TOOLTIP STYLE
+   ======================================== */
+
+.ai-chatbot-tooltip {
+    @include fixed-position($bottom: 80px, $right: 20px);
+    z-index: $z-modal-backdrop;
+
+    .ai-chatbot-icon {
+        @include flex-center;
+        font-size: $font-size-icon-2xl;
+        cursor: help;
+        width: 40px;
+        height: 40px;
+        line-height: 40px;
+        text-align: center;
+        background: $color-primary;
+        border-radius: $radius-circle;
+        box-shadow: $shadow-lg;
+        transition: $transition-transform;
+        position: relative;
+
+        &:hover {
+            transform: scale(1.1);
+        }
+
+        &::before {
+            content: attr(data-tooltip);
+            position: absolute;
+            bottom: 50px;
+            right: 0;
+            background: $color-text;
+            color: $color-white;
+            padding: $spacing-sm $spacing-md;
+            border-radius: $radius-lg;
+            font-size: $font-size-md;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: $transition-opacity;
+            width: 178px;
+            white-space: normal;
+        }
+
+        &:hover::before {
+            opacity: 1;
+        }
+    }
+}
+
+/* ========================================
+   7. ANIMATIONS
+   ======================================== */
+
+@keyframes slideInRight {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideInDown {
+    from {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* ========================================
+   8. RESPONSIVE DESIGN
+   ======================================== */
+
+@include mobile {
+    .ai-chatbot-banner,
+    .ai-chatbot-badge,
+    .ai-chatbot-inline,
+    .ai-chatbot-modal-trigger,
+    .ai-chatbot-tooltip {
+        right: $spacing-lg;
+        bottom: 70px;
+    }
+
+    .ai-chatbot-banner {
+        max-width: calc(100% - $spacing-xl);
+        left: $spacing-lg;
+        right: $spacing-lg;
+    }
+
+    .ai-chatbot-inline {
+        max-width: calc(100% - $spacing-xl);
+    }
+
+    .ai-chatbot-modal-content {
+        width: 95%;
+        padding: $spacing-xl;
+    }
+}
+
+/* ========================================
+   9. ACCESSIBILITY
+   ======================================== */
+
+@include reduced-motion {
+    .ai-chatbot-notice,
+    .ai-chatbot-modal,
+    .ai-chatbot-modal-content {
+        animation: none;
+    }
+}
+
+/* ========================================
+   10. PRINT & HIGH CONTRAST
+   ======================================== */
+
+/* Print Styles */
+@include print {
+    .ai-chatbot-notice,
+    .ai-chatbot-modal {
+        display: none !important;
+    }
+}
+
+/* High Contrast Mode */
+@include high-contrast {
+    .ai-chatbot-banner {
+        border: 2px solid $color-black;
+    }
+
+    .ai-chatbot-badge {
+        border: 2px solid $color-white;
+    }
+}

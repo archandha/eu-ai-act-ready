@@ -1,0 +1,34 @@
+{
+  "name": "eu-ai-act-ready",
+  "version": "1.0.0",
+  "description": "Disclose AI-generated content, media, and chatbots with transparent visitor notices, supporting transparency under Article 50 of the EU AI Act.",
+  "scripts": {
+    "build": "wp-scripts build",
+    "start": "wp-scripts start",
+    "check-engines": "wp-scripts check-engines",
+    "check-licenses": "wp-scripts check-licenses",
+    "lint:js": "eslint src/**/*.js",
+    "lint:js:fix": "eslint src/**/*.js --fix"
+  },
+  "devDependencies": {
+    "@wordpress/eslint-plugin": "^24.1.0",
+    "@wordpress/scripts": "^27.0.0",
+    "eslint": "^8.57.1"
+  },
+  "keywords": [
+    "wordpress plugin",
+    "eu ai act",
+    "eu ai act ready",
+    "eu ai act compliance",
+    "eu ai act transparency",
+    "eu ai act disclosure",
+    "ai transparency",
+    "ai disclosure"
+  ],
+  "author": "",
+  "license": "GPL-2.0-or-later",
+  "dependencies": {
+    "datatables.net": "^2.3.6",
+    "datatables.net-dt": "^2.3.6"
+  }
+}

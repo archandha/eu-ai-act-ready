@@ -1,0 +1,357 @@
+/**
+ * EU AI Act Ready - Frontend Transparency Notices
+ *
+ * Organization:
+ * 1. Base Styles & Icons
+ * 2. Banner Style Notice
+ * 3. Inline Style Notice
+ * 4. Badge Style
+ * 5. Modal Components
+ * 6. Widget & Comment Notices
+ * 7. Footer Disclosure
+ * 8. Animations
+ * 9. Responsive Design
+ * 10. Accessibility & Print
+ */
+
+@use '../variables' as *;
+@use '../mixins' as *;
+
+/* ========================================
+   1. BASE STYLES & ICONS
+   ======================================== */
+
+.eu-ai-act-ready-notice {
+    margin: $spacing-xl 0;
+    font-family: $font-family-base;
+}
+
+.eu-ai-act-ready-icon {
+    display: inline-block;
+    vertical-align: top;
+}
+
+/* Icon Alignment Variants */
+.ai-chatbot-banner,
+.eu-ai-act-ready-modal-trigger,
+.eu-ai-act-ready-modal,
+.ai-chatbot-modal {
+    .eu-ai-act-ready-icon {
+        vertical-align: middle;
+    }
+}
+
+.ai-chatbot-banner .eu-ai-act-ready-icon {
+    margin-top: -3px;
+}
+
+.ai-chatbot-tooltip,
+.ai-chatbot-inline,
+.ai-chatbot-badge,
+.ai-chatbot-modal-trigger {
+    .eu-ai-act-ready-icon {
+        vertical-align: baseline;
+    }
+}
+
+/* ========================================
+   2. BANNER STYLE NOTICE
+   ======================================== */
+
+.ai-notice-banner {
+    @include flex-align(flex-start);
+    gap: $gap-xl;
+    padding: $spacing-md $spacing-lg;
+    background: $gradient-primary;
+    border-radius: $radius-lg;
+    box-shadow: $shadow-md;
+    color: $color-white;
+    font-size: $font-size-lg;
+    line-height: $line-height-normal;
+
+    &.high-confidence,
+    &.medium-confidence {
+        background: $gradient-primary;
+        border-left: none;
+    }
+}
+
+/* Banner Icon */
+.ai-notice-icon {
+    font-size: $font-size-icon-2xl;
+    flex-shrink: 0;
+    @include flex-align(center);
+    margin-top: 2px;
+}
+
+/* Banner Content */
+.ai-notice-content {
+    flex: 1;
+    font-size: $font-size-lg;
+    line-height: 2;
+    color: $color-white;
+
+    strong {
+        color: $color-white;
+        font-weight: $font-weight-semibold;
+    }
+}
+
+/* Banner Close Button */
+.ai-notice-close {
+    @include flex-center;
+    background: none;
+    border: none;
+    font-size: $spacing-xl;
+    cursor: pointer;
+    color: rgba($color-white, 0.8);
+    padding: 0;
+    width: $spacing-2xl;
+    height: $spacing-2xl;
+    border-radius: $radius-circle;
+    transition: $transition-all;
+    margin-top: -2px;
+
+    &:hover {
+        background: none;
+        color: $color-white;
+    }
+}
+
+/* ========================================
+   3. INLINE STYLE NOTICE
+   ======================================== */
+
+.ai-notice-inline {
+    background: $color-primary-light;
+    @include border-left-accent($color-primary);
+    padding: $spacing-lg $spacing-md;
+    border-radius: 0;
+    font-size: $font-size-lg;
+    color: $color-text-light;
+    font-style: italic;
+    line-height: $line-height-normal;
+
+    .ai-icon {
+        margin-right: $spacing-sm;
+        vertical-align: middle;
+    }
+}
+
+/* ========================================
+   4. BADGE STYLE
+   ======================================== */
+
+/* Badge Wrapper */
+.eu-ai-act-ready-badge-wrapper {
+    margin: $spacing-lg 0;
+    text-align: center;
+}
+
+/* Badge */
+.eu-ai-act-ready-badge {
+    @include badge-gradient;
+    padding: $badge-padding-xl;
+    font-size: $font-size-base;
+    cursor: help;
+    line-height: $line-height-tight;
+
+    svg {
+        margin-right: $gap-xs;
+    }
+
+    &:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 4px 6px rgba($color-black, 0.15);
+        filter: brightness(1.05);
+    }
+}
+
+/* Excerpt Badge */
+span.eu-ai-act-ready-badge {
+    padding: $badge-padding-xl;
+    font-size: $font-size-base;
+    vertical-align: middle;
+    margin-right: 5px;
+}
+
+/* Title Badge (used in loops/archives) */
+.eu-ai-act-ready-badge-title {
+    margin-left: 10px;
+}
+
+/* Legacy Badge */
+.ai-badge {
+    font-size: $font-size-xl;
+    margin-left: 5px;
+}
+
+/* ========================================
+   5. MODAL COMPONENTS
+   ======================================== */
+
+/* Modal Trigger Button */
+.eu-ai-act-ready-modal-trigger {
+    @include button-gradient;
+    padding: $spacing-sm $spacing-xl;
+    border-radius: $radius-lg;
+    font-size: $font-size-md;
+    margin: $spacing-lg 0;
+    box-shadow: $shadow-md;
+    gap: $gap-sm;
+
+    &:hover,
+    &:focus,
+    &:active {
+        background: $gradient-primary;
+    }
+}
+
+/* Modal Overlay */
+.eu-ai-act-ready-modal {
+    @include modal-overlay;
+    display: none; // Hidden by default
+}
+
+/* Modal Content */
+.ai-modal-content {
+    @include modal-content($container-lg);
+    padding: $spacing-3xl;
+
+    h3 {
+        margin-top: 0;
+        color: $color-info-dark;
+        font-size: $font-size-4xl;
+    }
+}
+
+/* Modal Body */
+.ai-modal-body {
+    font-size: $font-size-xl;
+    line-height: $line-height-relaxed;
+    color: $color-text;
+
+    p {
+        margin: $spacing-lg 0;
+    }
+}
+
+/* Modal Close Button */
+.ai-modal-close {
+    @include close-button(30px);
+    position: absolute;
+    right: $spacing-lg;
+    top: $spacing-lg;
+    font-size: $font-size-icon-2xl;
+    font-weight: $font-weight-bold;
+    color: #999;
+    line-height: $line-height-single;
+
+    &:hover {
+        color: $color-text;
+    }
+}
+
+/* ========================================
+   6. WIDGET & COMMENT NOTICES
+   ======================================== */
+
+/* Widget Notice */
+.eu-ai-act-ready-widget-notice {
+    padding: $spacing-sm;
+    background: $color-bg-light;
+    border-radius: $radius-base;
+    margin-bottom: $spacing-lg;
+    font-size: $font-size-md;
+    color: $color-text-lighter;
+    text-align: center;
+}
+
+/* Comment Notice */
+.eu-ai-act-ready-comment-notice {
+    background: #e3f2fd;
+    padding: $spacing-sm $spacing-md;
+    border-radius: $radius-base;
+    font-size: $font-size-md;
+    margin-bottom: $spacing-lg;
+    color: $color-info-dark;
+}
+
+/* ========================================
+   7. FOOTER DISCLOSURE
+   ======================================== */
+
+.eu-ai-act-ready-footer-notice {
+    background: $color-bg-gray;
+    padding: $spacing-lg $spacing-xl;
+    text-align: center;
+    border-top: 1px solid $color-border;
+    font-size: $font-size-lg;
+    color: $color-text-lighter;
+
+    p {
+        margin: 0;
+    }
+
+    a {
+        color: $color-info;
+        text-decoration: none;
+        font-weight: $font-weight-semibold;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}
+
+/* ========================================
+   8. ANIMATIONS
+   ======================================== */
+
+@keyframes modalSlideIn {
+    from {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* ========================================
+   9. RESPONSIVE DESIGN
+   ======================================== */
+
+@include mobile {
+    .ai-notice-banner {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .ai-modal-content {
+        width: 95%;
+        padding: $spacing-xl;
+    }
+}
+
+/* ========================================
+   10. ACCESSIBILITY & PRINT
+   ======================================== */
+
+/* Accessibility */
+.eu-ai-act-ready-notice[role="alert"] {
+    position: relative;
+}
+
+/* Print Styles */
+@include print {
+    .ai-notice-close,
+    .eu-ai-act-ready-modal-trigger {
+        display: none;
+    }
+
+    .eu-ai-act-ready-notice {
+        border: 2px solid $color-text;
+    }
+}
